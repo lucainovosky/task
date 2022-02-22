@@ -1,7 +1,8 @@
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active">Mario Rossi</a>
-  <a href="#" class="list-group-item list-group-item-action">John Doe</a>
-  <a href="#" class="list-group-item list-group-item-action">Mike Smith</a>
-  <a href="#" class="list-group-item list-group-item-action">Ezio Auditore</a>
-  <a href="#" class="list-group-item list-group-item-action">Luca Camminacielo</a>
+<div class="list-group btn-group">
+  <ul class="list-group">
+    <li class="list-group-item"
+    *ngFor="let employe of employes">
+      <a href="#" (click)="onSelect(employe)">{{employe.name}}</a>
+    </li>  
+  </ul>  
 </div>
