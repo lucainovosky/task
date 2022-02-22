@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employe } from '../employe';
 import { EMPLOYES } from '../list-employes';
+import { EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-employe-list',
@@ -9,18 +10,28 @@ import { EMPLOYES } from '../list-employes';
 })
 export class EmployeListComponent implements OnInit {
 
-  selectedEmploye ?: Employe; 
+  //creo un output da mandare al employe-detail
+  @Output() newitemEvent = new EventEmitter<string>();
+
+  selectedEmploye ?: Employe;
 
   employes = EMPLOYES;
 
+  outputEmploye : string = "";
+
   onSelect(employe : Employe):void {
-    this.selectedEmploye = employe;
-    console.log(this.selectedEmploye.name);
+    this.outputEmploye = employe.name;
+    this.onOutputEmploye();
+  }
+
+  onOutputEmploye() {
+    //emetto l'evento
+    this.newitemEvent.emit(this.outputEmploye);
   }
 
   constructor() { }
 
   ngOnInit(): void {
-  }  
+  }
 
 }
