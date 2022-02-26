@@ -6,6 +6,7 @@ import { BossComponent } from './boss/boss.component';
 const routes: Routes = [
   {path: 'employe', component: EmployeAreaComponent},
   {path: 'boss', component: BossComponent},
+  { path: '',   redirectTo: '/employe', pathMatch: 'full' }, // redirect to `employe`
   {path: '*', component: EmployeAreaComponent}//wildcard per path non gestiti, da lasciare alla fine dell'array
 ];
 

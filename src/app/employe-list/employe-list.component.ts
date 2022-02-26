@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Employe } from '../employe';
-import { EMPLOYES } from '../list-employes';
+import { Employe } from '../employe-shared-functions/employe';
+import { EMPLOYES } from '../employe-shared-functions/list-employes';
 import { EventEmitter, Output } from '@angular/core';
 
 @Component({
