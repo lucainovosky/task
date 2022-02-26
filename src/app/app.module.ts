@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { EmployeListComponent } from './employe-list/employe-list.component';
 import { EmplyeDetailComponent } from './emplye-detail/emplye-detail.component';
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
+import { BossComponent } from './boss/boss.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EmployeAreaComponent } from './employe-area/employe-area.component';
     HeaderComponent,
     EmployeListComponent,
     EmplyeDetailComponent,
-    EmployeAreaComponent
+    EmployeAreaComponent,
+    BossComponent
   ],
   imports: [
     BrowserModule,
