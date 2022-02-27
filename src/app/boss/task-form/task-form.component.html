@@ -1,0 +1,117 @@
+<div class="form-group">
+
+  <form #employeForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <!--TASK NAME-->
+
+    <label for="taskName">Task Name</label>
+
+    <input type="text"
+    class="form-control"
+    id="taskName"
+    required
+    [(ngModel)]="model.taskName"
+    name="taskName">
+
+    <!--DATE START-->
+
+    <label for="dateStart">Start</label>
+
+    <input type="date"
+    class="form-control"
+    id="dateStart"
+    required
+    [(ngModel)]="model.dateStart"
+    name="dateStart">
+
+    <!--DATE END-->
+
+    <label for="dateEnd">Deadline</label>
+
+    <input type="date"
+    class="form-control"
+    id="dateEnd"
+    required
+    [(ngModel)]="model.dateEnd"
+    name="dateEnd">
+
+    <!--PRIORITY-->
+    <label for="priority">Priority</label>
+
+    <select class="form-control"
+    id="priorityList"
+    required>
+
+      <option
+      *ngFor="let _priority of priorityArray"
+      [value]="_priority">
+        {{_priority}}
+      </option>
+
+    </select>
+
+    <!--EMPLOYE NAME-->
+    <label for="employeList">Employe</label>
+
+    <select class="form-control"
+    id="employeList"
+    required>
+
+      <option
+      *ngFor="let _employe of employesArray"
+      [value]="_employe">
+        {{_employe}}
+      </option>
+
+    </select>
+
+    <!--PERSONS INVOLVED-->
+
+    <label for="involvedPeople">Involved Persons</label>
+
+    <input type="number"
+    class="form-control"
+    id="involvedPeople"
+    required
+    [(ngModel)]="model.involvedPeople"
+    name="involvedPeople">
+
+    <!--STATE-->
+    <label for="stateList">State</label>
+
+    <select class="form-control"
+    id="stateList"
+    required>
+
+      <option
+      *ngFor="let _state of stateArray"
+      [value]="_state">
+        {{_state}}
+      </option>
+
+    </select>
+
+    <!--PROGRESS-->
+    <label for="progressList">Progress</label>
+
+    <select class="form-control"
+    id="progressList"
+    required>
+
+      <option
+      *ngFor="let _progress of progressArray"
+      [value]="_progress">
+        {{_progress}}
+      </option>
+
+    </select>
+
+    <button type="submit"
+    class="btn btn-success"
+    [disabled]="!employeForm.valid">
+      Add Task
+    </button>
+
+  </form>
+
+</div>

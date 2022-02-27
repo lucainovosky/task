@@ -10,6 +10,8 @@ import { EmployeListComponent } from './employe-list/employe-list.component';
 import { EmplyeDetailComponent } from './emplye-detail/emplye-detail.component';
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
 import { BossComponent } from './boss/boss.component';
+import { TaskFormComponent } from './boss/task-form/task-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { BossComponent } from './boss/boss.component';
     EmployeListComponent,
     EmplyeDetailComponent,
     EmployeAreaComponent,
-    BossComponent
+    BossComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
