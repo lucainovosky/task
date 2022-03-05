@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AddWork } from 'src/app/employe-shared-functions/add-work';
 
 @Component({
@@ -7,16 +7,22 @@ import { AddWork } from 'src/app/employe-shared-functions/add-work';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css']
 })
-export class TaskFormComponent implements OnInit {
+export class TaskFormComponent {
 
-  name = new FormControl('');
+  //con viewchild mi metto in ascolto del form
+  @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
 
-  constructor() {
+  task = {
+    taskName : '',
+    dateEnd : Date,
+    dateStart : Date,
+    priority : '',
+    employe : '',
+    involvedPeople : 1,
+    state : '',
+    progress : '',
   }
 
-
-  ngOnInit(): void {
-  }
 
   //creo la lista per il menu a tendina
   employesArray = [
@@ -56,7 +62,23 @@ export class TaskFormComponent implements OnInit {
   submitted : boolean = false;
 
   onSubmit() {
-    this.submitted = true;
+    this.submitted  = true;
+    this.task.taskName   = this.submitForm.value.taskName;
+    this.task.dateStart  = this.submitForm.value.dateStart;
+    this.task.dateEnd    = this.submitForm.value.dateEnd;
+    this.task.priority   = this.submitForm.value.priority;
+    this.task.employe    = this.submitForm.value.employe;
+    this.task.involvedPeople = this.submitForm.value.involvedPeople;
+    this.task.state      = this.submitForm.value.state;
+    this.task.progress   = this.submitForm.value.progress;
+    console.log(this.task.taskName);
+    console.log(this.task.dateStart);
+    console.log(this.task.dateEnd);
+    console.log(this.task.priority);
+    console.log(this.task.employe);
+    console.log(this.task.involvedPeople);
+    console.log(this.task.state);
+    console.log(this.task.progress);
   }
 
 }

@@ -10,7 +10,7 @@
     class="form-control"
     id="taskName"
     required
-    [(ngModel)]="model.taskName"
+    ngModel
     name="taskName">
 
     <!--DATE START-->
@@ -21,7 +21,7 @@
     class="form-control"
     id="dateStart"
     required
-    [(ngModel)]="model.dateStart"
+    ngModel
     name="dateStart">
 
     <!--DATE END-->
@@ -32,14 +32,16 @@
     class="form-control"
     id="dateEnd"
     required
-    [(ngModel)]="model.dateEnd"
+    ngModel
     name="dateEnd">
 
     <!--PRIORITY-->
     <label for="priority">Priority</label>
 
     <select class="form-control"
-    id="priorityList"
+    id="priority"
+    name="priority"
+    ngModel
     required>
 
       <option
@@ -51,10 +53,12 @@
     </select>
 
     <!--EMPLOYE NAME-->
-    <label for="employeList">Employe</label>
+    <label for="employe">Employe</label>
 
     <select class="form-control"
-    id="employeList"
+    id="employe"
+    name="employe"
+    ngModel
     required>
 
       <option
@@ -73,15 +77,17 @@
     class="form-control"
     id="involvedPeople"
     required
-    [(ngModel)]="model.involvedPeople"
+    ngModel
     name="involvedPeople">
 
     <!--STATE-->
-    <label for="stateList">State</label>
+    <label for="state">State</label>
 
     <select class="form-control"
-    id="stateList"
-    required>
+    id="state"
+    name="state"
+    required
+    ngModel>
 
       <option
       *ngFor="let _state of stateArray"
@@ -92,11 +98,13 @@
     </select>
 
     <!--PROGRESS-->
-    <label for="progressList">Progress</label>
+    <label for="progress">Progress</label>
 
     <select class="form-control"
-    id="progressList"
-    required>
+    id="progress"
+    name="progress"
+    required
+    ngModel>
 
       <option
       *ngFor="let _progress of progressArray"
