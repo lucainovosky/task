@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TASK } from 'src/app/employe-area/task-list/task-shared/task';
 import { AddWork } from 'src/app/employe-shared-functions/add-work';
 
 @Component({
