@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TASK } from 'src/app/employe-area/task-list/task-shared/task';
+import { TaskSharedService } from 'src/app/employe-area/task-list/task-shared/task-shared.service';
 import { AddWork } from 'src/app/employe-shared-functions/add-work';
 
 @Component({
@@ -8,10 +9,18 @@ import { AddWork } from 'src/app/employe-shared-functions/add-work';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css']
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit {
 
   //con viewchild mi metto in ascolto del form
   @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
+
+  message ?: string = "test subscribe";
+
+  constructor(private sharedTaskService : TaskSharedService) {}
+
+  ngOnInit(): void {
+    this.sharedTaskService.sharedMessage.subscribe(message => this.message = message)
+  }
 
   task = {
     taskName : '',
