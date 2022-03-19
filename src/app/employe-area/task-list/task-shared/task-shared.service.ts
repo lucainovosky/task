@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DefaultTasks } from './DefaultTasks';
+import { TaskInterface } from './task-interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskSharedService {
 
+  /*This Service manage the task interaction between the
+  task-form and the task-list component*/
+
   constructor() { }
 
-  private message = new BehaviorSubject('First message');
+  taskObjects : TaskInterface[] = DefaultTasks;
 
-  sharedMessage = this.message.asObservable();
+  private message = new BehaviorSubject(DefaultTasks);
 
-  nextMessage(message:string) {
-    this.message.next(message);
+  public sharedTasks = this.message.asObservable();
+
+  nextMessage(newTask : TaskInterface[]) {
+    this.message.next(newTask);
   }
 
 }

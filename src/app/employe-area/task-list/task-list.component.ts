@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TASK } from './task-shared/task';
+import { DefaultTasks } from './task-shared/DefaultTasks';
+import { TaskInterface } from './task-shared/task-interface';
 import { TaskSharedService } from './task-shared/task-shared.service';
 
 @Component({
@@ -9,14 +10,13 @@ import { TaskSharedService } from './task-shared/task-shared.service';
 })
 export class TaskListComponent implements OnInit {
 
-  taskObjects = TASK;
-
-  message ?: string;
+  taskObjects : TaskInterface[] = DefaultTasks;
 
   constructor(private sharedServTask : TaskSharedService) { }
 
   ngOnInit(): void {
-    this.sharedServTask.sharedMessage.subscribe(message => this.message = message);
+    //subscribe to new task added with observable
+    this.sharedServTask.sharedTasks.subscribe(message => this.taskObjects = message);
   }
 
 }
