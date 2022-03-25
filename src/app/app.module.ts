@@ -12,6 +12,7 @@ import { BossComponent } from './boss/boss.component';
 import { TaskFormComponent } from './boss/task-form/task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './employe-area/task-list/task-list.component';
+import { AuthComponent } from './auth/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TaskListComponent } from './employe-area/task-list/task-list.component'
     EmployeAreaComponent,
     BossComponent,
     TaskFormComponent,
-    TaskListComponent
+    TaskListComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
