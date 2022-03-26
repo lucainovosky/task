@@ -13,6 +13,8 @@ import { TaskFormComponent } from './boss/task-form/task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './employe-area/task-list/task-list.component';
 import { AuthComponent } from './auth/auth/auth.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CustomDialogComponent } from './dialog/custom-dialog/custom-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AuthComponent } from './auth/auth/auth.component';
     BossComponent,
     TaskFormComponent,
     TaskListComponent,
-    AuthComponent
+    AuthComponent,
+    CustomDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { AuthComponent } from './auth/auth/auth.component';
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
