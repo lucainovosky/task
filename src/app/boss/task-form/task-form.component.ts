@@ -4,6 +4,7 @@ import { DefaultTasks } from 'src/app/employe-area/task-list/task-shared/Default
 import { TaskInterface } from 'src/app/employe-area/task-list/task-shared/task-interface';
 import { TaskSharedService } from 'src/app/employe-area/task-list/task-shared/task-shared.service';
 import { AddWork } from 'src/app/employe-shared-functions/add-work';
+import { EMPLOYES } from 'src/app/employe-shared-functions/list-employes';
 
 @Component({
   selector: 'app-task-form',
@@ -20,11 +21,7 @@ export class TaskFormComponent {
   private taskObject : TaskInterface[] = DefaultTasks;
 
   //create the dropdown list
-  employesArray = [
-    'pluto',
-    'paperino',
-    'minnie'
-  ];
+  employesArray = EMPLOYES;
 
   priorityArray = [
     'low',

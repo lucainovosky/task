@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CustomDialogComponent } from 'src/app/dialog/custom-dialog/custom-dialog.component';
+import { IsloggedinService } from 'src/app/services/isloggedin.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +11,18 @@ import { CustomDialogComponent } from 'src/app/dialog/custom-dialog/custom-dialo
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+  
+  constructor(
+    private router : Router, 
+    private dialog : MatDialog,
+    private logService : IsloggedinService) { }
+
+  ngOnInit(): void {
+    if(this.logService.getIsLoggedIn()) {
+      this.navigateToBossForm();
+    }
+
+  }
 
   isLoginMode = true;
 
@@ -23,7 +36,8 @@ export class AuthComponent implements OnInit {
     if(this.submitForm.value.user == 'admin'
     && this.submitForm.value.user == 'admin') {
       console.log('giusto');
-      this.router.navigate(['boss']);
+      this.logService.setIsLoggedIn(true);
+      this.navigateToBossForm();
     } else {
       console.log('sbagliato');
 
@@ -32,15 +46,16 @@ export class AuthComponent implements OnInit {
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
 
+        this.logService.setIsLoggedIn(false);
+
         this.dialog.open(CustomDialogComponent, dialogConfig);
 
     }
+  
   }
 
-
-  constructor(private router : Router, private dialog : MatDialog) { }
-
-  ngOnInit(): void {
-  }
+  navigateToBossForm() {
+    this.router.navigate(['boss']);
+  } 
 
 }
