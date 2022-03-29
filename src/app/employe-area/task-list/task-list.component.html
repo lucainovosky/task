@@ -1,16 +1,18 @@
 <div class="row">
   <div class="col-5" *ngFor="let taskObject of taskObjects">
-    <div class="card bg-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">{{taskObject.taskName}}</div>
-      <div class="card-body">
-        <h5 class="card-title">Who: {{taskObject.personName}}</h5>
-        <p class="card-text">Start: {{taskObject.startDate}}</p>
-        <p class="card-text">Due date: {{taskObject.dueDate}}</p>
-        <p class="card-text">Priority: {{taskObject.priority}} / Staff members: {{taskObject.involved}}</p>
-        <p class="card-text">State: {{taskObject.state}}</p>
-        <p class="card-text">Progress: {{taskObject.progress}}</p>
+    <div *ngIf="inputEmploye==taskObject.personName">
+      <div class="card bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{taskObject.taskName}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Who: {{taskObject.personName}}</h5>
+          <p class="card-text">Start: {{taskObject.startDate}}</p>
+          <p class="card-text">Due date: {{taskObject.dueDate}}</p>
+          <p class="card-text">Priority: {{taskObject.priority}} / Staff members: {{taskObject.involved}}</p>
+          <p class="card-text">State: {{taskObject.state}}</p>
+          <p class="card-text">Progress: {{taskObject.progress}}</p>
+        </div>
       </div>
-    </div>
+    </div>    
   </div>
 </div>
 
