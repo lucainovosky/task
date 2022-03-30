@@ -3,8 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DefaultTasks } from 'src/app/employe-area/task-list/task-shared/DefaultTasks';
 import { TaskInterface } from 'src/app/employe-area/task-list/task-shared/task-interface';
 import { TaskSharedService } from 'src/app/employe-area/task-list/task-shared/task-shared.service';
-import { AddWork } from 'src/app/employe-shared-functions/add-work';
-import { EMPLOYES } from 'src/app/employe-shared-functions/list-employes';
+import { Employes } from 'src/app/employe-shared-functions/list-employes';
 
 @Component({
   selector: 'app-task-form',
@@ -21,7 +20,7 @@ export class TaskFormComponent {
   private taskObject : TaskInterface[] = DefaultTasks;
 
   //create the dropdown list
-  employesArray = EMPLOYES;
+  employesArray = Employes;
 
   priorityArray = [
     'low',
@@ -48,8 +47,6 @@ export class TaskFormComponent {
     'progress',
     'ended'
   ];
-
-  model = new AddWork("", "", new Date(), new Date(), "", 1 ,'',0);
 
   submitted : boolean = false;
 

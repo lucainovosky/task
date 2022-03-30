@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
 import { BossComponent } from './boss/boss.component';
-import { AuthComponent } from './auth/auth/auth.component';
+import { AuthComponent } from './boss/auth/auth.component';
 
 const routes: Routes = [
   {path: 'employe', component: EmployeAreaComponent},
