@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CustomDialogComponent } from 'src/app/dialog/custom-dialog/custom-dialog.component';
+import { CustomDialogComponent } from 'src/app/dialog/custom-dialog.component';
 import { IsloggedinService } from 'src/app/services/isloggedin.service';
 
 @Component({
@@ -11,9 +11,9 @@ import { IsloggedinService } from 'src/app/services/isloggedin.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  
+
   constructor(
-    private router : Router, 
+    private router : Router,
     private dialog : MatDialog,
     private logService : IsloggedinService) { }
 
@@ -51,11 +51,11 @@ export class AuthComponent implements OnInit {
         this.dialog.open(CustomDialogComponent, dialogConfig);
 
     }
-  
+
   }
 
   navigateToBossForm() {
     this.router.navigate(['boss']);
-  } 
+  }
 
 }

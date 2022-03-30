@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employe } from '../../employe-shared-functions/employe';
 import { Employes } from '../../employe-shared-functions/list-employes';
 import { EventEmitter, Output } from '@angular/core';
+import { SelectedUserService } from 'src/app/services/selected-user.service';
 
 @Component({
   selector: 'app-employe-list',
@@ -9,6 +10,11 @@ import { EventEmitter, Output } from '@angular/core';
   styleUrls: ['./employe-list.component.css']
 })
 export class EmployeListComponent implements OnInit {
+
+  constructor( private selectedUserServ : SelectedUserService) { }
+
+  ngOnInit(): void {
+  }
 
   //creo un output da mandare al employe-detail
   @Output() newitemEvent = new EventEmitter<string>();
@@ -21,17 +27,13 @@ export class EmployeListComponent implements OnInit {
 
   onSelect(employe : Employe):void {
     this.outputEmploye = employe.name;
+    this.selectedUserServ.setEmploye(this.outputEmploye);
     this.onOutputEmploye();
   }
 
   onOutputEmploye() {
     //emetto l'evento
     this.newitemEvent.emit(this.outputEmploye);
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
 }

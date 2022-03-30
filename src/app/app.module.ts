@@ -10,11 +10,11 @@ import { EmplyeDetailComponent } from './employe-area/employe-detail/emplye-deta
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
 import { BossComponent } from './boss/boss.component';
 import { TaskFormComponent } from './boss/task-form/task-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { TaskListComponent } from './employe-area/task-list/task-list.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import { CustomDialogComponent } from './dialog/custom-dialog/custom-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AuthComponent } from './boss/auth/auth.component';
+import { CustomDialogComponent } from './dialog/custom-dialog.component';
 
 @NgModule({
   declarations: [

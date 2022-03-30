@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DefaultTasks } from 'src/app/employe-area/task-list/task-shared/DefaultTasks';
-import { TaskInterface } from 'src/app/employe-area/task-list/task-shared/task-interface';
-import { TaskSharedService } from 'src/app/employe-area/task-list/task-shared/task-shared.service';
+import { DefaultTasks } from 'src/app/task-shared/DefaultTasks';
+import { TaskInterface } from 'src/app/task-shared/task-interface';
+import { TaskSharedService } from 'src/app/services/task-shared.service';
 import { Employes } from 'src/app/employe-shared-functions/list-employes';
+import { SelectedUserService } from 'src/app/services/selected-user.service';
 
 @Component({
   selector: 'app-task-form',
@@ -13,8 +14,10 @@ import { Employes } from 'src/app/employe-shared-functions/list-employes';
 })
 export class TaskFormComponent {
 
-  constructor(private sharedTaskService : TaskSharedService,
-    private router : Router) {}
+  constructor(
+    private sharedTaskService : TaskSharedService,
+    private router : Router,
+    private selectedUserServ : SelectedUserService) {}
 
   //viewchild decorator listen the html form
   @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
@@ -70,9 +73,11 @@ export class TaskFormComponent {
     this.sharedTaskService.nextMessage(this.taskObject);
 
     this.goToEmployeArea();
+
   }
 
   goToEmployeArea() {
+    this.selectedUserServ.setEmploye(this.submitForm.value.employe);
     this.router.navigate(['/employe']);
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DefaultTasks } from './DefaultTasks';
-import { TaskInterface } from './task-interface';
+import { DefaultTasks } from '../task-shared/DefaultTasks';
+import { TaskInterface } from '../task-shared/task-interface';
 
 @Injectable({
   providedIn: 'root'
