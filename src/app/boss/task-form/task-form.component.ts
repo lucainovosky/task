@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DefaultTasks } from 'src/app/employe-area/task-list/task-shared/DefaultTasks';
 import { TaskInterface } from 'src/app/employe-area/task-list/task-shared/task-interface';
 import { TaskSharedService } from 'src/app/employe-area/task-list/task-shared/task-shared.service';
@@ -13,7 +14,8 @@ import { EMPLOYES } from 'src/app/employe-shared-functions/list-employes';
 })
 export class TaskFormComponent {
 
-  constructor(private sharedTaskService : TaskSharedService) {}
+  constructor(private sharedTaskService : TaskSharedService,
+    private router : Router) {}
 
   //viewchild decorator listen the html form
   @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
@@ -69,6 +71,12 @@ export class TaskFormComponent {
 
     //add the input form to the observable
     this.sharedTaskService.nextMessage(this.taskObject);
+
+    this.goToEmployeArea();
+  }
+
+  goToEmployeArea() {
+    this.router.navigate(['/employe']);
   }
 
 }
