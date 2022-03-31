@@ -1,8 +1,10 @@
 <div class="list-group btn-group">
   <ul class="list-group">
     <li class="list-group-item"
-    *ngFor="let employe of employes">
-      <a (click)="onSelect(employe)">{{employe.name}}</a>
+    *ngFor="let employe of employes"
+    (click)="onSelect(employe)">
+    {{employe.name}}
+      <!--<a (click)="onSelect(employe)">{{employe.name}}</a>-->
     </li>
   </ul>
 </div>
