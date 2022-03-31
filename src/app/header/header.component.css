@@ -1,1 +1,22 @@
+.navbar {
+  background-color: #122a25 !important;
+}
 
+a, h1 {
+  color: white !important;
+  margin: 25px;
+}
+
+a {
+  color: white !important;
+  padding: 20px,30px,20px,30px;
+}
+
+.navbar-collapse {
+  float: right !important;
+}
+
+a:hover {
+  background-color: #164375;
+  transition: 0.3s;
+}
