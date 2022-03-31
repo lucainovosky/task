@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-5" *ngFor="let taskUser of tasksUser">
-    <!--<div *ngIf="inputEmploye==taskGlobal.personName">-->
-      <div class="card bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">{{taskUser.taskName}}</div>
-        <div class="card-body">
-          <h5 class="card-title">Who: {{taskUser.personName}}</h5>
-          <p class="card-text">Start: {{taskUser.startDate}}</p>
-          <p class="card-text">Due date: {{taskUser.dueDate}}</p>
-          <p class="card-text">Priority: {{taskUser.priority}} / Staff members: {{taskUser.involved}}</p>
-          <p class="card-text">State: {{taskUser.state}}</p>
-          <p class="card-text">Progress: {{taskUser.progress}}</p>
-        </div>
+    <div class="card bg-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">
+        {{taskUser.taskName}}
       </div>
-    <!--</div>    -->
+      <div class="card-body">
+        <h5 class="card-title">Who: {{taskUser.personName}}</h5>
+        <p class="card-text">Start: {{taskUser.startDate}}</p>
+        <p class="card-text">Due date: {{taskUser.dueDate}}</p>
+        <p class="card-text">Priority: {{taskUser.priority}} / Staff members: {{taskUser.involved}}</p>
+        <p class="card-text">State: {{taskUser.state}}</p>
+        <p class="card-text">Progress: {{taskUser.progress}}</p>
+      </div>
+    </div>
   </div>
 </div>
 

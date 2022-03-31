@@ -13,7 +13,9 @@ import { UserTasksList } from 'src/app/task-shared/UserTasksList';
 export class TaskListComponent implements OnInit, OnChanges {
 
   tasksGlobal : TaskInterface[] = DefaultTasks;
-  tasksUser : TaskInterface[] = UserTasksList;
+  tasksUser   : TaskInterface[] = UserTasksList;
+
+  emptyTaskUserList : boolean = false;
 
   //from employe-list
   @Input() inputEmploye ?: string;
@@ -37,13 +39,17 @@ export class TaskListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
     this.tasksUser = [];
+
     for(let i = 0; i < this.tasksGlobal.length; i++) {
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
         this.inputEmploye != "") {
         this.tasksUser.push(this.tasksGlobal[i]);
+        this.emptyTaskUserList = false;
       }
     }
+
   }
 
   setSelectedUser() : string {
