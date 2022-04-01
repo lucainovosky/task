@@ -1,10 +1,13 @@
 .navbar {
-  background-color: #122a25 !important;
+  margin-top: 10px;
+  background-color: white !important;
+  border-bottom: 3px solid #97989a;
+  height: 55px;
 }
 
 a, h1 {
-  color: white !important;
-  margin: 25px;
+  color: #122a25 !important;
+  margin: 15px;
 }
 
 h1 {
@@ -13,9 +16,10 @@ h1 {
 }
 
 a {
-  color: white !important;
-  padding: 30px 40px !important;
+  color: #122a25 !important;
+  padding: 15px 40px !important;
   font-size: 14px;
+  border-bottom: 7px solid transparent;
 }
 
 .navbar-collapse {
@@ -30,6 +34,9 @@ a {
 }
 
 a:hover {
-  background-color: #164375;
-  transition: 0.3s;
+  color: #164375 !important;
+  font-weight: bold;
+  border-bottom: 7px solid #164375;
+  border-radius:radious 5%;
+  transition: 0.5s;
 }

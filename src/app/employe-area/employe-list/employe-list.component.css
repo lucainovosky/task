@@ -1,15 +1,21 @@
 li {
   cursor: pointer;
-  background-color: #122a25;
   color: white !important;
+  background-color: #fafbfc;
   padding: 20px 30px;
+  color: #122a25 !important;
+  border-top: 0px;
+  border-bottom: 0px;
 }
 
 li:hover {
-  background-color: #164375;
+  background-color: #ebecf0;
+  color: #164375 !important;
+  font-weight: bold;
   transition: 0.3s;
 }
 
-.list-group {
-  margin-top: 30px;
+.sideBar {
+  background-color: #fafbfc;
+  margin-top: 10px;
 }
