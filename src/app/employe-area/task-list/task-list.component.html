@@ -1,16 +1,35 @@
 <div class="row">
   <div class="col-5" *ngFor="let taskUser of tasksUser">
     <div class="card bg-light mb-3" style="max-width: 18rem;">
-      <div class="card-header">
-        {{taskUser.taskName}}
+      <div class="card-header center">
+        <p class="taskName">{{taskUser.taskName}}</p>
+        <h3 class="card-title">{{taskUser.personName}}</h3>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Who: {{taskUser.personName}}</h5>
-        <p class="card-text">Start: {{taskUser.startDate}}</p>
-        <p class="card-text">Due date: {{taskUser.dueDate}}</p>
-        <p class="card-text">Priority: {{taskUser.priority}} / Staff members: {{taskUser.involved}}</p>
-        <p class="card-text">State: {{taskUser.state}}</p>
-        <p class="card-text">Progress: {{taskUser.progress}}</p>
+        <div>
+          <img src='assets/imgs/start_date.png' alt="start date"/>
+          <p class="card-text">Start: {{taskUser.startDate}}</p>
+        </div>
+        <div>
+          <img src='assets/imgs/end.png' alt="end date"/>
+          <p class="card-text">Due date: {{taskUser.dueDate}}</p>
+        </div>
+        <div>
+          <img src='assets/imgs/priority.png' alt="priority"/>
+          <p class="card-text">Priority: {{taskUser.priority}}</p>
+        </div>
+        <div>
+          <img src='assets/imgs/members.png' alt="staff"/>
+          <p class="card-text">Staff members: {{taskUser.involved}}</p>
+        </div>
+        <div>
+          <img src='assets/imgs/state.png' alt="state"/>
+          <p class="card-text">State: {{taskUser.state}}</p>
+        </div>
+        <div>
+          <img src='assets/imgs/progress.png' alt="progress"/>
+          <p class="card-text">Progress: {{taskUser.progress}}</p>
+        </div>
       </div>
     </div>
   </div>

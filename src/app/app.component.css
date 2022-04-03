@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Rubik";
+  src: url('/src/assets/font/Rubik-Black.ttf');
+}
+
+* {
+  font-family: Rubik;
+}

@@ -1,12 +1,9 @@
 <div class="list-group btn-group sideBar">
   <ul class="list-group">
-    <hr>
     <li class="list-group-item"
     *ngFor="let employe of employes"
     (click)="onSelect(employe)">
     {{employe.name}}
-      <!--<a (click)="onSelect(employe)">{{employe.name}}</a>-->
     </li>
-    <hr>
   </ul>
 </div>
