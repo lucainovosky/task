@@ -1,5 +1,12 @@
 .row {
   margin: 0 auto;
+  padding: 40px;;
   width: 400px;
-  margin-top:60px;
+  margin-top: 80px;
 }
+
+.button {
+  border-bottom: 2px solid white !important;
+}
+
+

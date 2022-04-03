@@ -1,0 +1,22 @@
+form {
+  margin-top: 80px;
+  padding: 40px 50px;
+}
+
+label {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.button {
+  border-bottom: 2px solid white !important;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 50px !important;
+}

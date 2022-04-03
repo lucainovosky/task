@@ -8,3 +8,52 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.backgroud-box {
+  border-radius: 2%;
+  background-image: linear-gradient(to right, #315597, #264377);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+label {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+select {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: transparent !important;
+  font-size: 18px;
+  padding: 15px 30px;
+  cursor: pointer;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: white;
+  border-bottom: 2px solid transparent;
+}
+
+.button:hover {
+  border-bottom: 2px solid transparent;
+  color: #264377 !important;
+  background-color: white !important;
+  border-radius: 5% !important;
+  transition: 0.4s;
+}
+
+.center-btn {
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

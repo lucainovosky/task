@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-4">
         <app-employe-list (newitemEvent)="addItem($event)"></app-employe-list>
     </div>
-    <div class="col-9">
+    <div class="col-8">
         <app-emplye-detail [inputEmploye]="itemSelected"></app-emplye-detail>
         <app-task-list [inputEmploye]="itemSelected"></app-task-list>
     </div>

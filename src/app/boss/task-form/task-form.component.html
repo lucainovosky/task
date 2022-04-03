@@ -1,6 +1,11 @@
-<div class="form-group">
+<div class="row">
 
-  <form #employeForm="ngForm" (ngSubmit)="onSubmit()">
+
+<div class="form-group col-4">
+
+  <form #employeForm="ngForm"
+  (ngSubmit)="onSubmit()"
+  class="backgroud-box">
 
     <!--TASK NAME-->
 
@@ -115,11 +120,13 @@
     </select>
 
     <button type="submit"
-    class="btn btn-success"
+    class="button center-btn"
     [disabled]="!employeForm.valid">
       Add Task
     </button>
 
   </form>
+
+</div>
 
 </div>

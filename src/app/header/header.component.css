@@ -18,15 +18,6 @@ h1 {
   font-size: 28px;
 }
 
-a {
-  color: white;
-  padding: 10px 30px !important;
-  font-size: 14px;
-  border: 2px solid transparent;
-  border-radius: 10%;
-
-}
-
 .navbar-collapse {
   float: right !important;
   display: block !important;
@@ -38,9 +29,6 @@ a {
   margin-right: 150px;
 }
 
-a:hover {
-  color: #264377 !important;
-  background-color: white;
-  border-radius: 5%;
-  transition: 0.4s;
+.button {
+  padding: 15px 30px !important;
 }
