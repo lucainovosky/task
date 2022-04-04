@@ -53,3 +53,24 @@ img {
   width: 30px;
   margin-right: 10px;
 }
+
+.button {
+  background-color: transparent !important;
+  font-size: 18px;
+  padding: 10px 0px !important;
+  margin: 0 70px !important;
+  cursor: pointer;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #264377;
+  border-bottom: 2px solid #264377;
+}
+
+.button:hover {
+  border-bottom: 2px solid transparent;
+  color: white !important;
+  background-color: #264377 !important;
+  border-radius: 5% !important;
+  transition: 0.4s;
+}

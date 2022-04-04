@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Employe } from '../../employe-shared-functions/employe';
-import { Employes } from '../../employe-shared-functions/list-employes';
+import { Employe } from '../employe-shared-functions/employe';
+import { Employes } from '../employe-shared-functions/list-employes';
 import { EventEmitter, Output } from '@angular/core';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
 

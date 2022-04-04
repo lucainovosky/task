@@ -4,6 +4,8 @@ import { DefaultTasks } from '../../task-shared/DefaultTasks';
 import { TaskInterface } from '../../task-shared/task-interface';
 import { TaskSharedService } from '../../services/task-shared.service';
 import { UserTasksList } from 'src/app/task-shared/UserTasksList';
+import { IsloggedinService } from 'src/app/services/isloggedin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -17,15 +19,20 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   emptyTaskUserList : boolean = false;
 
+  bossLogged ?: boolean;
+
   //from employe-list
   @Input() inputEmploye ?: string;
 
   constructor(
     private sharedServTask : TaskSharedService,
-    private selectedUserServ : SelectedUserService ) { }
+    private selectedUserServ : SelectedUserService,
+    private logService : IsloggedinService,
+    private router : Router ) { }
 
   ngOnInit(): void {
     this.inputEmploye = this.setSelectedUser();
+    this.bossLogged = this.logService.isLoggedIn;
 
     //subscribe to new task added with observable
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
@@ -57,6 +64,11 @@ export class TaskListComponent implements OnInit, OnChanges {
       return this.selectedUserServ.selectedEmploye;
     }
     return this.tasksGlobal[0].personName;
+  }
+
+  editTask() {
+    this.logService.setIsLoggedIn(true);
+    this.router.navigate(['auth']);
   }
 
 }

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { EmployeListComponent } from './employe-area/employe-list/employe-list.component';
+import { EmployeListComponent } from './side-menu/employe-list.component';
 import { EmplyeDetailComponent } from './employe-area/employe-detail/emplye-detail.component';
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
 import { BossComponent } from './boss/boss.component';
