@@ -5,10 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class SelectedUserService {
 
-  selectedEmploye : string = ""
+  selectedEmploye : string = "";
+
+  employeSelected : boolean = false;
+  tasksFilterSelected : boolean = false;
 
   setEmploye(employe : string) {
     this.selectedEmploye = employe;
+    this.employeSelected = true;
+    this.tasksFilterSelected = false
+  }
+
+  setOtherFilter() {
+    this.employeSelected = false;
+    this.tasksFilterSelected = true;
   }
 
   constructor() { }

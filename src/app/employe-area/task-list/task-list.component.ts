@@ -37,12 +37,20 @@ export class TaskListComponent implements OnInit, OnChanges {
     //subscribe to new task added with observable
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
-    for(let i = 0; i < this.tasksGlobal.length; i++) {
-      if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
-        this.tasksUser.push(this.tasksGlobal[i]);
+    if(this.selectedUserServ.employeSelected) {
+      for(let i = 0; i < this.tasksGlobal.length; i++) {
+        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
+          this.tasksUser.push(this.tasksGlobal[i]);
+        }
+      }
+    } else if(this.selectedUserServ.tasksFilterSelected) {
+      for(let i = 0; i < this.tasksGlobal.length; i++) {
+        if(/*this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName*/true) {
+          console.log("entro qui")
+          this.tasksUser.push(this.tasksGlobal[i]);
+        }
       }
     }
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {

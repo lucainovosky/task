@@ -36,4 +36,22 @@ export class EmployeListComponent implements OnInit {
     this.newitemEvent.emit(this.outputEmploye);
   }
 
+  filterTasks(filter : string) {
+    switch(filter) {
+      case 'all':
+        this.selectedUserServ.setOtherFilter();
+        console.log('all');
+        break;
+      case 'progress':
+        console.log('progress');
+        break;
+      case 'blocked':
+        console.log('blocked');
+        break;
+      case 'ended':
+        console.log('ended');
+        break;
+    }
+  }
+
 }
