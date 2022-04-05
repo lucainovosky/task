@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DefaultTasks } from 'src/app/task-shared/DefaultTasks';
@@ -12,7 +12,7 @@ import { SelectedUserService } from 'src/app/services/selected-user.service';
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.css']
 })
-export class TaskFormComponent {
+export class TaskFormComponent implements OnInit {
 
   constructor(
     private sharedTaskService : TaskSharedService,
@@ -23,6 +23,10 @@ export class TaskFormComponent {
   @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
 
   private taskObject : TaskInterface[] = DefaultTasks;
+
+  ngOnInit(): void {
+    this.sharedTaskService.sharedTasks.subscribe(message => this.taskObject = message);
+  }
 
   //create the dropdown list
   employesArray = Employes;

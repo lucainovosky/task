@@ -5,7 +5,7 @@ import { TaskInterface } from '../../task-shared/task-interface';
 import { TaskSharedService } from '../../services/task-shared.service';
 import { UserTasksList } from 'src/app/task-shared/UserTasksList';
 import { IsloggedinService } from 'src/app/services/isloggedin.service';
-import { Router } from '@angular/router';
+import { TaskEditService } from 'src/app/services/task-edit.service';
 
 @Component({
   selector: 'app-task-list',
@@ -16,6 +16,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   tasksGlobal : TaskInterface[] = DefaultTasks;
   tasksUser   : TaskInterface[] = UserTasksList;
+  taskToEdit  : TaskInterface[] = [];
 
   emptyTaskUserList : boolean = false;
 
@@ -28,7 +29,7 @@ export class TaskListComponent implements OnInit, OnChanges {
     private sharedServTask : TaskSharedService,
     private selectedUserServ : SelectedUserService,
     private logService : IsloggedinService,
-    private router : Router ) { }
+    private taskEditServ : TaskEditService ) { }
 
   ngOnInit(): void {
     this.inputEmploye = this.setSelectedUser();
@@ -66,9 +67,12 @@ export class TaskListComponent implements OnInit, OnChanges {
     return this.tasksGlobal[0].personName;
   }
 
-  editTask() {
+  editTask(getTaskUserSelected : TaskInterface[], index : number) {
+
+    console.log("-----> "+getTaskUserSelected[index].taskName);
+    this.taskToEdit[0] = getTaskUserSelected[index];
     this.logService.setIsLoggedIn(true);
-    this.router.navigate(['auth']);
+    this.taskEditServ.nextMessage(this.taskToEdit);
   }
 
 }

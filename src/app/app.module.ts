@@ -15,6 +15,7 @@ import { TaskListComponent } from './employe-area/task-list/task-list.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthComponent } from './boss/auth/auth.component';
 import { CustomDialogComponent } from './dialog/custom-dialog.component';
+import { EditTaskComponent } from './employe-area/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CustomDialogComponent } from './dialog/custom-dialog.component';
     TaskFormComponent,
     TaskListComponent,
     AuthComponent,
-    CustomDialogComponent
+    CustomDialogComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

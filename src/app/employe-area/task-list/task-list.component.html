@@ -1,5 +1,6 @@
 <div class="row">
-  <div class="col-5" *ngFor="let taskUser of tasksUser">
+  <div class="col-5"
+  *ngFor="let taskUser of tasksUser; let taskIndex = index;">
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header center">
         <p class="taskName">{{taskUser.taskName}}</p>
@@ -30,12 +31,12 @@
           <img src='assets/imgs/progress.png' alt="progress"/>
           <p class="card-text">Progress: {{taskUser.progress}}</p>
         </div>
-        <div *ngIf="bossLogged" class="center">
-          <a href="#" 
-          class="card-link button center-btn" 
-          (clic)="editTask()" 
-          routerLink="/boss">Edit</a>
-        </div>        
+        <div *ngIf="!bossLogged" class="center">
+          <a
+          class="card-link button center-btn"
+          (click)="editTask(tasksUser,taskIndex)"
+          routerLink="/edit">Edit</a>
+        </div>
       </div>
     </div>
   </div>

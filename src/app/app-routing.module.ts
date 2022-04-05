@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeAreaComponent } from './employe-area/employe-area.component';
 import { BossComponent } from './boss/boss.component';
 import { AuthComponent } from './boss/auth/auth.component';
+import { EditTaskComponent } from './employe-area/edit-task/edit-task.component';
 
 const routes: Routes = [
+  {path: 'edit', component: EditTaskComponent},
   {path: 'employe', component: EmployeAreaComponent},
   {path: 'boss', component: BossComponent},
   {path: 'auth', component: AuthComponent},

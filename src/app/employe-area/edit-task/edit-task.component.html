@@ -1,0 +1,133 @@
+<div class="form-row">
+
+
+  <div class="form-group col-4">
+
+    <form #employeForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="backgroud-box">
+
+      <!--TASK NAME-->
+
+      <label for="taskName">Task Name</label>
+
+      <input type="text"
+      class="form-control"
+      id="taskName"
+      required
+      name="taskName"
+      ngModel={{this.taskToEdit[0].taskName}}>
+
+      <!--DATE START-->
+
+      <label for="dateStart">Start</label>
+
+      <input type="date"
+      class="form-control"
+      id="dateStart"
+      required
+      ngModel
+      name="dateStart">
+
+      <!--DATE END-->
+
+      <label for="dateEnd">Deadline</label>
+
+      <input type="date"
+      class="form-control"
+      id="dateEnd"
+      required
+      ngModel
+      name="dateEnd">
+
+      <!--PRIORITY-->
+      <label for="priority">Priority</label>
+
+      <select class="form-control"
+      id="priority"
+      name="priority"
+      required>
+
+        <option
+        *ngFor="let _priority of priorityArray"
+        [value]="_priority"
+
+        [selected]="_priority == taskToEdit[0].priority">
+          {{_priority}}
+        </option>
+
+      </select>
+
+      <!--EMPLOYE NAME-->
+      <label for="employe">Employe</label>
+
+      <select class="form-control"
+      id="employe"
+      name="employe"
+      required>
+
+        <option
+        *ngFor="let _employe of employesArray"
+        [value]="_employe.name"
+        [selected]="_employe.name == taskToEdit[0].personName">
+          {{_employe.name}}
+        </option>
+
+      </select>
+
+      <!--PERSONS INVOLVED-->
+
+      <label for="involvedPeople">Involved Persons</label>
+
+      <input type="number"
+      class="form-control"
+      id="involvedPeople"
+      required
+      ngModel={{this.taskToEdit[0].involved}}
+      name="involvedPeople">
+
+      <!--STATE-->
+      <label for="state">State</label>
+
+      <select class="form-control"
+      id="state"
+      name="state"
+      required>
+
+        <option
+        *ngFor="let _state of stateArray"
+        [value]="_state"
+        [selected]="_state == taskToEdit[0].state">
+          {{_state}}
+        </option>
+
+      </select>
+
+      <!--PROGRESS-->
+      <label for="progress">Progress</label>
+
+      <select class="form-control"
+      id="progress"
+      name="progress"
+      required>
+
+        <option
+        *ngFor="let _progress of progressArray"
+        [value]="_progress"
+        [selected]="_progress+'%' == taskToEdit[0].progress">
+          {{_progress}}
+        </option>
+
+      </select>
+
+      <button type="submit"
+      class="form-button center-btn"
+      [disabled]="!employeForm.valid">
+        Edit Task
+      </button>
+
+    </form>
+
+  </div>
+
+  </div>
