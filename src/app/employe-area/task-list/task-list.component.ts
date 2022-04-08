@@ -31,26 +31,29 @@ export class TaskListComponent implements OnInit, OnChanges {
     private router : Router ) { }
 
   ngOnInit(): void {
+    console.log('tasklist oninit');
+
     this.inputEmploye = this.setSelectedUser();
     this.bossLogged = this.logService.isLoggedIn;
 
     //subscribe to new task added with observable
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
-    if(this.selectedUserServ.employeSelected) {
+    /*if(this.selectedUserServ.employeSelected) {
       for(let i = 0; i < this.tasksGlobal.length; i++) {
+        console.log("entro quiiiiii")
         if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
           this.tasksUser.push(this.tasksGlobal[i]);
         }
       }
     } else if(this.selectedUserServ.tasksFilterSelected) {
       for(let i = 0; i < this.tasksGlobal.length; i++) {
-        if(/*this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName*/true) {
+        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
           console.log("entro qui")
           this.tasksUser.push(this.tasksGlobal[i]);
         }
       }
-    }
+    }*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -58,11 +61,27 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.tasksUser = [];
 
     for(let i = 0; i < this.tasksGlobal.length; i++) {
+
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
         this.inputEmploye != "") {
+
         this.tasksUser.push(this.tasksGlobal[i]);
         this.emptyTaskUserList = false;
+        
+
+      } else if(this.selectedUserServ.getTasksSelected()) {
+
+        
+        for(let i = 0; i < this.tasksGlobal.length; i++) {
+          if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
+            this.tasksUser.push(this.tasksGlobal[i]);
+
+          }
+
+        }
+
       }
+
     }
 
   }

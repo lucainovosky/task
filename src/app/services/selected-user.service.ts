@@ -7,8 +7,8 @@ export class SelectedUserService {
 
   selectedEmploye : string = "";
 
-  employeSelected : boolean = false;
-  tasksFilterSelected : boolean = false;
+  employeSelected ?: boolean;
+  tasksFilterSelected ?: boolean;
 
   setEmploye(employe : string) {
     this.selectedEmploye = employe;
@@ -21,5 +21,11 @@ export class SelectedUserService {
     this.tasksFilterSelected = true;
   }
 
-  constructor() { }
+  getTasksSelected() {
+    return this.tasksFilterSelected
+  }
+
+  getEmployeSelected() {
+    return this.employeSelected
+  }
 }
