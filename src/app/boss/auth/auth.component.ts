@@ -35,11 +35,9 @@ export class AuthComponent implements OnInit {
   sendToBoss() {
     if(this.submitForm.value.user == 'admin'
     && this.submitForm.value.user == 'admin') {
-      console.log('giusto');
       this.logService.setIsLoggedIn(true);
       this.navigateToBossForm();
     } else {
-      console.log('sbagliato');
 
       const dialogConfig = new MatDialogConfig();
 

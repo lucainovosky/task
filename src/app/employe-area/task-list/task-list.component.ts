@@ -5,7 +5,7 @@ import { TaskInterface } from '../../task-shared/task-interface';
 import { TaskSharedService } from '../../services/task-shared.service';
 import { UserTasksList } from 'src/app/task-shared/UserTasksList';
 import { IsloggedinService } from 'src/app/services/isloggedin.service';
-import { TaskEditService } from 'src/app/services/task-edit.service';
+import { TaskIndexSelectedService } from 'src/app/services/task-index-selected.service';
 
 @Component({
   selector: 'app-task-list',
@@ -29,7 +29,7 @@ export class TaskListComponent implements OnInit, OnChanges {
     private sharedServTask : TaskSharedService,
     private selectedUserServ : SelectedUserService,
     private logService : IsloggedinService,
-    private taskEditServ : TaskEditService ) { }
+    private taskIndex : TaskIndexSelectedService) { }
 
   ngOnInit(): void {
     this.inputEmploye = this.setSelectedUser();
@@ -39,6 +39,7 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
     for(let i = 0; i < this.tasksGlobal.length; i++) {
+      console.log(i+") "+this.tasksGlobal[i].taskName)
       if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
         this.tasksUser.push(this.tasksGlobal[i]);
       }
@@ -69,10 +70,10 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   editTask(getTaskUserSelected : TaskInterface[], index : number) {
 
-    console.log("-----> "+getTaskUserSelected[index].taskName);
-    this.taskToEdit[0] = getTaskUserSelected[index];
+    //this.taskToEdit[0] = getTaskUserSelected[index];
     this.logService.setIsLoggedIn(true);
-    this.taskEditServ.nextMessage(this.taskToEdit);
+    this.taskIndex.setIndex(index)
+
   }
 
 }

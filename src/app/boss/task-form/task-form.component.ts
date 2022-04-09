@@ -6,6 +6,9 @@ import { TaskInterface } from 'src/app/task-shared/task-interface';
 import { TaskSharedService } from 'src/app/services/task-shared.service';
 import { Employes } from 'src/app/employe-shared-functions/list-employes';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
+import { Priority } from 'src/app/employe-shared-functions/list-priority';
+import { Progress } from 'src/app/employe-shared-functions/list-progress';
+import { State } from 'src/app/employe-shared-functions/list-state';
 
 @Component({
   selector: 'app-task-form',
@@ -30,33 +33,9 @@ export class TaskFormComponent implements OnInit {
 
   //create the dropdown list
   employesArray = Employes;
-
-  priorityArray = [
-    'low',
-    'medium',
-    'high'
-  ];
-
-  progressArray = [
-    0,
-    10,
-    20,
-    30,
-    40,
-    50,
-    60,
-    70,
-    80,
-    90,
-    100,
-  ];
-
-  stateArray = [
-    'blocked',
-    'progress',
-    'ended'
-  ];
-
+  priorityArray = Priority;
+  progressArray = Progress;
+  stateArray = State;
   submitted : boolean = false;
 
   onSubmit() {

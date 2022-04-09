@@ -1,7 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Employes } from 'src/app/employe-shared-functions/list-employes';
-import { TaskEditService } from 'src/app/services/task-edit.service';
+import { Priority } from 'src/app/employe-shared-functions/list-priority';
+import { Progress } from 'src/app/employe-shared-functions/list-progress';
+import { State } from 'src/app/employe-shared-functions/list-state';
+import { SelectedUserService } from 'src/app/services/selected-user.service';
+import { TaskIndexSelectedService } from 'src/app/services/task-index-selected.service';
+import { TaskSharedService } from 'src/app/services/task-shared.service';
 import { DefaultTasks } from 'src/app/task-shared/DefaultTasks';
 import { TaskInterface } from 'src/app/task-shared/task-interface';
 
@@ -12,56 +18,39 @@ import { TaskInterface } from 'src/app/task-shared/task-interface';
 })
 export class EditTaskComponent implements OnInit {
 
-  constructor( private taskEditServ : TaskEditService) { }
+  constructor(
+    //private taskEditServ : TaskEditService,
+    private router : Router,
+    private selectedUserServ : SelectedUserService,
+    private sharedTaskService : TaskSharedService,
+    private taskIndex : TaskIndexSelectedService) { }
 
   taskToEdit : TaskInterface[] = [];
 
-  ngOnInit(): void {
-    //subscribe to new task added with observable
-    this.taskEditServ.sharedTasks.subscribe(message => this.taskToEdit = message);
-  }
-
-  public book: any = {
-    pageLayout: 'sdsdds'
- }
-
   //viewchild decorator listen the html form
-  @ViewChild('employeForm', { static: false }) submitForm !: NgForm;
+  @ViewChild('employeEditForm', { static: false }) submitForm !: NgForm;
 
   private taskObject : TaskInterface[] = DefaultTasks;
 
   //create the dropdown list
   employesArray = Employes;
-
-  priorityArray = [
-    'low',
-    'medium',
-    'high'
-  ];
-
-  progressArray = [
-    '0',
-    '10',
-    '20',
-    '30',
-    '40',
-    '50',
-    '60',
-    '70',
-    '80',
-    '90',
-    '100',
-  ];
-
-  stateArray = [
-    'blocked',
-    'progress',
-    'ended'
-  ];
-
+  priorityArray = Priority;
+  progressArray = Progress;
+  stateArray = State;
   submitted : boolean = false;
 
+  indexTask ?: number;
+
+  ngOnInit(): void {
+    //subscribe to new task added with observable
+    //this.taskEditServ.sharedTasks.subscribe(message => this.taskToEdit = message);
+    this.indexTask = this.taskIndex.getIndex()
+    console.log(this.indexTask);
+    this.sharedTaskService.sharedTasks.subscribe(message => this.taskToEdit = message);
+  }
+
   onSubmit() {
+
     this.submitted  = true;
 
     this.taskObject.push({
@@ -75,6 +64,23 @@ export class EditTaskComponent implements OnInit {
       progress:   this.submitForm.value.progress
     });
 
+    //add the input form to the observable
+    this.sharedTaskService.nextMessage(this.taskObject);
+
+    this.goToEmployeArea()
+
   }
+
+  formatDateForHtml(input : string) : string {
+    let splitInput = input.split("/")
+    return splitInput[2] + "-" + splitInput[1] + "-" + splitInput[0];
+  }
+
+  goToEmployeArea() {
+    this.selectedUserServ.setEmploye(this.submitForm.value.employe);
+    this.router.navigate(['/employe']);
+  }
+
+
 
 }
