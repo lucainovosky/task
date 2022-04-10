@@ -7,7 +7,7 @@ export class TaskIndexSelectedService {
 
   constructor() { }
 
-  index ?: number;
+  index : number = 0;
 
   setIndex(selection : number) {
     this.index = selection

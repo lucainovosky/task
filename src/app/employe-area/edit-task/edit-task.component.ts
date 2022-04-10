@@ -39,13 +39,11 @@ export class EditTaskComponent implements OnInit {
   stateArray = State;
   submitted : boolean = false;
 
-  indexTask ?: number;
+  indexTask : number = 0
 
   ngOnInit(): void {
-    //subscribe to new task added with observable
-    //this.taskEditServ.sharedTasks.subscribe(message => this.taskToEdit = message);
     this.indexTask = this.taskIndex.getIndex()
-    console.log(this.indexTask);
+    //subscribe to new task added with observable
     this.sharedTaskService.sharedTasks.subscribe(message => this.taskToEdit = message);
   }
 

@@ -16,7 +16,7 @@
       id="taskName"
       required
       name="taskName"
-      ngModel={{this.taskToEdit[0].taskName}}>
+      ngModel={{this.taskToEdit[indexTask].taskName}}>
 
       <!--DATE START-->
 
@@ -26,7 +26,7 @@
       class="form-control"
       id="dateStart"
       required
-      value="{{this.formatDateForHtml(this.taskToEdit[0].startDate)}}"
+      value="{{this.formatDateForHtml(this.taskToEdit[indexTask].startDate)}}"
       name="dateStart">
 
       <!--DATE END-->
@@ -37,7 +37,7 @@
       class="form-control"
       id="dateEnd"
       required
-      value="{{this.formatDateForHtml(this.taskToEdit[0].dueDate)}}"
+      value="{{this.formatDateForHtml(this.taskToEdit[indexTask].dueDate)}}"
       name="dateEnd">
 
       <!--PRIORITY-->
@@ -52,7 +52,7 @@
         *ngFor="let _priority of priorityArray"
         [value]="_priority"
 
-        [selected]="_priority == taskToEdit[0].priority">
+        [selected]="_priority == taskToEdit[indexTask].priority">
           {{_priority}}
         </option>
 
@@ -69,7 +69,7 @@
         <option
         *ngFor="let _employe of employesArray"
         [value]="_employe.name"
-        [selected]="_employe.name == taskToEdit[0].personName">
+        [selected]="_employe.name == taskToEdit[indexTask].personName">
           {{_employe.name}}
         </option>
 
@@ -83,7 +83,7 @@
       class="form-control"
       id="involvedPeople"
       required
-      ngModel={{this.taskToEdit[0].involved}}
+      ngModel={{this.taskToEdit[indexTask].involved}}
       name="involvedPeople">
 
       <!--STATE-->
@@ -97,7 +97,7 @@
         <option
         *ngFor="let _state of stateArray"
         [value]="_state"
-        [selected]="_state == taskToEdit[0].state">
+        [selected]="_state == taskToEdit[indexTask].state">
           {{_state}}
         </option>
 
@@ -114,7 +114,7 @@
         <option
         *ngFor="let _progress of progressArray"
         [value]="_progress"
-        [selected]="_progress+'%' == taskToEdit[0].progress">
+        [selected]="_progress+'%' == taskToEdit[indexTask].progress">
           {{_progress}}
         </option>
 

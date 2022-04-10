@@ -68,12 +68,21 @@ export class TaskListComponent implements OnInit, OnChanges {
     return this.tasksGlobal[0].personName;
   }
 
-  editTask(getTaskUserSelected : TaskInterface[], index : number) {
-
-    //this.taskToEdit[0] = getTaskUserSelected[index];
+  editTask(index : number) {
     this.logService.setIsLoggedIn(true);
-    this.taskIndex.setIndex(index)
+    this.taskIndex.setIndex(this.getIndexTaskToEdit(index))
+  }
 
+  getIndexTaskToEdit(index : number) : number {
+    let counter = 0
+    for(let i = 0; i < this.tasksGlobal.length; i++) {
+      if(this.tasksGlobal[i]==this.tasksUser[index])
+      {
+        break
+      }
+      counter++
+    }
+    return counter
   }
 
 }
