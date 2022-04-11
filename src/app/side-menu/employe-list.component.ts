@@ -37,21 +37,7 @@ export class EmployeListComponent implements OnInit {
   }
 
   filterTasks(filter : string) {
-    switch(filter) {
-      case 'all':
-        this.selectedUserServ.selection = 'All'
-        break;
-      case 'progress':
-        this.selectedUserServ.selection = 'In Progress'
-        break;
-      case 'blocked':
-        this.selectedUserServ.selection = 'Blocked'
-        break;
-      case 'ended':
-        this.selectedUserServ.selection = 'Ended'
-        break;
-    }
-    this.selectedUserServ.setOtherFilter(this.selectedUserServ.selection);
+    this.selectedUserServ.setOtherFilter(filter);
     this.newitemEvent.emit(filter);
   }
 

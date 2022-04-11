@@ -31,7 +31,6 @@ export class TaskListComponent implements OnInit, OnChanges {
     private router : Router ) { }
 
   ngOnInit(): void {
-    console.log('tasklist oninit');
 
     this.inputEmploye = this.setSelectedUser();
     this.bossLogged = this.logService.isLoggedIn;
@@ -66,7 +65,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
         this.tasksUser.push(this.tasksGlobal[i]);
         this.emptyTaskUserList = false;
-        
+
 
       } else if(this.tasksGlobal[i].state.toLowerCase() == this.inputEmploye?.toLocaleLowerCase() &&
         this.inputEmploye != "" && this.selectedUserServ.tasksFilterSelected) {
