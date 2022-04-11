@@ -39,20 +39,20 @@ export class EmployeListComponent implements OnInit {
   filterTasks(filter : string) {
     switch(filter) {
       case 'all':
-        this.newitemEvent.emit("pippo");
-        this.selectedUserServ.setOtherFilter();
-        console.log('all');
+        this.selectedUserServ.selection = 'All'
         break;
       case 'progress':
-        console.log('progress');
+        this.selectedUserServ.selection = 'In Progress'
         break;
       case 'blocked':
-        console.log('blocked');
+        this.selectedUserServ.selection = 'Blocked'
         break;
       case 'ended':
-        console.log('ended');
+        this.selectedUserServ.selection = 'Ended'
         break;
     }
+    this.selectedUserServ.setOtherFilter(this.selectedUserServ.selection);
+    this.newitemEvent.emit(filter);
   }
 
 }

@@ -48,9 +48,9 @@ export class TaskFormComponent {
   ];
 
   stateArray = [
-    'blocked',
-    'progress',
-    'ended'
+    'Blocked',
+    'In Progress',
+    'Ended'
   ];
 
   submitted : boolean = false;

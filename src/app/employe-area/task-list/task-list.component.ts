@@ -61,25 +61,24 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.tasksUser = [];
 
     for(let i = 0; i < this.tasksGlobal.length; i++) {
-
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
-        this.inputEmploye != "") {
+        this.inputEmploye != "" && this.selectedUserServ.employeFilterSelected) {
 
         this.tasksUser.push(this.tasksGlobal[i]);
         this.emptyTaskUserList = false;
         
 
-      } else if(this.selectedUserServ.getTasksSelected()) {
+      } else if(this.tasksGlobal[i].state.toLowerCase() == this.inputEmploye?.toLocaleLowerCase() &&
+        this.inputEmploye != "" && this.selectedUserServ.tasksFilterSelected) {
 
-        
-        for(let i = 0; i < this.tasksGlobal.length; i++) {
-          if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
-            this.tasksUser.push(this.tasksGlobal[i]);
+          this.tasksUser.push(this.tasksGlobal[i]);
+          this.emptyTaskUserList = false;
 
-          }
+      }
 
-        }
-
+      if(this.inputEmploye?.toLocaleLowerCase() == "all") {
+        this.tasksUser = this.tasksGlobal;
+        this.emptyTaskUserList = false;
       }
 
     }
@@ -87,8 +86,8 @@ export class TaskListComponent implements OnInit, OnChanges {
   }
 
   setSelectedUser() : string {
-    if(this.selectedUserServ.selectedEmploye != "") {
-      return this.selectedUserServ.selectedEmploye;
+    if(this.selectedUserServ.selection != "") {
+      return this.selectedUserServ.selection;
     }
     return this.tasksGlobal[0].personName;
   }

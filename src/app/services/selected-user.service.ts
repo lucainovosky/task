@@ -5,19 +5,22 @@ import { Injectable } from '@angular/core';
 })
 export class SelectedUserService {
 
-  selectedEmploye : string = "";
+  selection : string = "";
 
-  employeSelected ?: boolean;
+  employeFilterSelected ?: boolean;
   tasksFilterSelected ?: boolean;
 
   setEmploye(employe : string) {
-    this.selectedEmploye = employe;
-    this.employeSelected = true;
+    //if user select an employe
+    this.selection = employe;
+    this.employeFilterSelected = true;
     this.tasksFilterSelected = false
   }
 
-  setOtherFilter() {
-    this.employeSelected = false;
+  setOtherFilter(filter : string) {
+    //if user select a state
+    this.selection = filter
+    this.employeFilterSelected = false;
     this.tasksFilterSelected = true;
   }
 
@@ -26,6 +29,6 @@ export class SelectedUserService {
   }
 
   getEmployeSelected() {
-    return this.employeSelected
+    return this.employeFilterSelected
   }
 }
