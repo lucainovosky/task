@@ -31,7 +31,8 @@
           <img src='assets/imgs/progress.png' alt="progress"/>
           <p class="card-text">Progress: {{taskUser.progress}}</p>
         </div>
-        <div *ngIf="!bossLogged" class="center">
+        <!--<div *ngIf="bossLogged" class="center">-->
+          <div *ngIf="true" class="center">
           <a
           class="card-link button center-btn"
           (click)="editTask(taskIndex)"

@@ -8,7 +8,6 @@ import { State } from 'src/app/employe-shared-functions/list-state';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
 import { TaskIndexSelectedService } from 'src/app/services/task-index-selected.service';
 import { TaskSharedService } from 'src/app/services/task-shared.service';
-import { DefaultTasks } from 'src/app/task-shared/DefaultTasks';
 import { TaskInterface } from 'src/app/task-shared/task-interface';
 
 @Component({
@@ -19,18 +18,20 @@ import { TaskInterface } from 'src/app/task-shared/task-interface';
 export class EditTaskComponent implements OnInit {
 
   constructor(
-    //private taskEditServ : TaskEditService,
     private router : Router,
     private selectedUserServ : SelectedUserService,
     private sharedTaskService : TaskSharedService,
     private taskIndex : TaskIndexSelectedService) { }
 
-  taskToEdit : TaskInterface[] = [];
+  tasksGlobal : TaskInterface[] = [];//get all the tasks
+  taskToEdit : TaskInterface = {
+    taskName : "", personName : "", startDate : "", dueDate : "", priority : "",
+    involved : "", state : "", progress : ""
+  };//create the tasks to edit
+  indexTask : number = 0//get the index array
 
   //viewchild decorator listen the html form
   @ViewChild('employeEditForm', { static: false }) submitForm !: NgForm;
-
-  private taskObject : TaskInterface[] = DefaultTasks;
 
   //create the dropdown list
   employesArray = Employes;
@@ -39,31 +40,29 @@ export class EditTaskComponent implements OnInit {
   stateArray = State;
   submitted : boolean = false;
 
-  indexTask : number = 0
-
   ngOnInit(): void {
     this.indexTask = this.taskIndex.getIndex()
     //subscribe to new task added with observable
-    this.sharedTaskService.sharedTasks.subscribe(message => this.taskToEdit = message);
+    this.sharedTaskService.sharedTasks.subscribe(message => this.tasksGlobal = message);
   }
 
   onSubmit() {
 
     this.submitted  = true;
 
-    this.taskObject.push({
-      taskName:   this.submitForm.value.taskName,
-      personName: this.submitForm.value.employe,
-      startDate:  this.submitForm.value.dateStart,
-      dueDate:    this.submitForm.value.dateEnd,
-      priority:   this.submitForm.value.priority,
-      involved:   this.submitForm.value.involvedPeople,
-      state:      this.submitForm.value.state,
-      progress:   this.submitForm.value.progress
-    });
+    this.taskToEdit.taskName = this.submitForm.value.taskName
+    this.taskToEdit.personName = this.submitForm.value.employe
+    this.taskToEdit.startDate = this.submitForm.value.dateStart
+    this.taskToEdit.dueDate = this.submitForm.value.dateEnd
+    this.taskToEdit.priority = this.submitForm.value.priority
+    this.taskToEdit.involved = this.submitForm.value.involvedPeople
+    this.taskToEdit.state = this.submitForm.value.state
+    this.taskToEdit.progress = this.submitForm.value.progress
 
     //add the input form to the observable
-    this.sharedTaskService.nextMessage(this.taskObject);
+    //this.sharedTaskService.nextMessage(this.taskToEdit);
+
+    this.tasksGlobal[this.indexTask] = this.taskToEdit;
 
     this.goToEmployeArea()
 

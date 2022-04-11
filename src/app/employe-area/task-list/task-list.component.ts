@@ -16,7 +16,6 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   tasksGlobal : TaskInterface[] = DefaultTasks;
   tasksUser   : TaskInterface[] = UserTasksList;
-  taskToEdit  : TaskInterface[] = [];
 
   emptyTaskUserList : boolean = false;
 
