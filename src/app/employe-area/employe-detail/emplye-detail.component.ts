@@ -30,7 +30,6 @@ export class EmplyeDetailComponent implements OnInit, OnChanges {
     if(initialState) {
       this.inputEmploye = "Please select an employe or access to the Boss page to add a task!"
     } else {
-      console.log("entro per mettere titolo "+this.selectedUserServ.selection)
       this.inputEmploye = this.selectedUserServ.selection + " tasks list"
     }
   }

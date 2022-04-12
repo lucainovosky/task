@@ -15,7 +15,7 @@ li {
   border: none !important;
 }
 
-.list-group-item:hover {
+.list-group-item:hover, li.active {
   background-color: #c2c2c2 !important;
   font-weight: 500;
   color: #164375 !important;
@@ -31,7 +31,7 @@ li {
 
 .titleList {
   cursor: auto;
-  list-style-type: none; 
+  list-style-type: none;
   text-align: center;
   font-weight: bold;
   font-size: 18px;

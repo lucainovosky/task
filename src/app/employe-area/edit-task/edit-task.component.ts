@@ -8,7 +8,7 @@ import { State } from 'src/app/employe-shared-functions/list-state';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
 import { TaskIndexSelectedService } from 'src/app/services/task-index-selected.service';
 import { TaskSharedService } from 'src/app/services/task-shared.service';
-import { TaskInterface } from 'src/app/task-shared/task-interface';
+import { TaskInterface } from 'src/app/task-shared/TaskInterface';
 
 @Component({
   selector: 'app-edit-task',

@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
 import { DefaultTasks } from '../../task-shared/DefaultTasks';
-import { TaskInterface } from '../../task-shared/task-interface';
+import { TaskInterface } from '../../task-shared/TaskInterface';
 import { TaskSharedService } from '../../services/task-shared.service';
 import { UserTasksList } from 'src/app/task-shared/UserTasksList';
 import { IsloggedinService } from 'src/app/services/isloggedin.service';
@@ -38,27 +38,19 @@ export class TaskListComponent implements OnInit, OnChanges {
     //subscribe to new task added with observable
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
-    /*if(this.selectedUserServ.employeSelected) {
-      for(let i = 0; i < this.tasksGlobal.length; i++) {
-        console.log("entro quiiiiii")
-        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
-          this.tasksUser.push(this.tasksGlobal[i]);
-        }
-      }
-    } else if(this.selectedUserServ.tasksFilterSelected) {
-      for(let i = 0; i < this.tasksGlobal.length; i++) {
-        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
-          console.log("entro qui")
-          this.tasksUser.push(this.tasksGlobal[i]);
-        }
-      }
-    }*/
+    this.initializeList()
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
     this.tasksUser = [];
 
+    this.initializeList()
+
+  }
+
+  initializeList() {
     for(let i = 0; i < this.tasksGlobal.length; i++) {
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
         this.inputEmploye != "" && this.selectedUserServ.employeFilterSelected) {

@@ -17,7 +17,7 @@
         </div>
         <div>
           <img src='assets/imgs/priority.png' alt="priority"/>
-          <p class="card-text">Priority: {{taskUser.priority}}</p>
+          <p class="card-text">Priority: {{taskUser.priority.toUpperCase()}}</p>
         </div>
         <div>
           <img src='assets/imgs/members.png' alt="staff"/>
@@ -25,14 +25,13 @@
         </div>
         <div>
           <img src='assets/imgs/state.png' alt="state"/>
-          <p class="card-text">State: {{taskUser.state}}</p>
+          <p class="card-text">State: {{taskUser.state.toUpperCase()}}</p>
         </div>
         <div>
           <img src='assets/imgs/progress.png' alt="progress"/>
           <p class="card-text">Progress: {{taskUser.progress}}</p>
         </div>
-        <!--<div *ngIf="bossLogged" class="center">-->
-          <div *ngIf="true" class="center">
+        <div *ngIf="bossLogged" class="center">
           <a
           class="card-link button center-btn"
           (click)="editTask(taskIndex)"

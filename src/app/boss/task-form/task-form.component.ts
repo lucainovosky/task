@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DefaultTasks } from 'src/app/task-shared/DefaultTasks';
-import { TaskInterface } from 'src/app/task-shared/task-interface';
+import { TaskInterface } from 'src/app/task-shared/TaskInterface';
 import { TaskSharedService } from 'src/app/services/task-shared.service';
 import { Employes } from 'src/app/employe-shared-functions/list-employes';
 import { SelectedUserService } from 'src/app/services/selected-user.service';

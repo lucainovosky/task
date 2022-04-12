@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Employe } from '../employe-shared-functions/employe';
+import { EmployeInterface } from '../employe-shared-functions/EmployeInterface';
 import { Employes } from '../employe-shared-functions/list-employes';
+import { State } from '../employe-shared-functions/list-state';
 import { EventEmitter, Output } from '@angular/core';
 import { SelectedUserService } from 'src/app/services/selected-user.service';
 
@@ -19,13 +20,18 @@ export class EmployeListComponent implements OnInit {
   //creo un output da mandare al employe-detail
   @Output() newitemEvent = new EventEmitter<string>();
 
-  selectedEmploye ?: Employe;
+  selectedEmploye ?: EmployeInterface;
 
   employes = Employes;
 
+  states = State;
+
   outputEmploye : string = "";
 
-  onSelect(employe : Employe):void {
+  selectedEmployeIndex = -1;
+  selectedStateIndex = -1;
+
+  onSelect(employe : EmployeInterface):void {
     this.outputEmploye = employe.name;
     this.selectedUserServ.setEmploye(this.outputEmploye);
     this.onOutputEmploye();
