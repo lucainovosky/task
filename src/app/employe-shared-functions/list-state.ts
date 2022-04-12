@@ -1,1 +1,1 @@
-export const State = ['blocked','progress','ended']
+export const State = ['blocked','in progress','ended']

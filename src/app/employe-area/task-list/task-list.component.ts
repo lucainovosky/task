@@ -38,7 +38,6 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
     for(let i = 0; i < this.tasksGlobal.length; i++) {
-      console.log(i+") "+this.tasksGlobal[i].taskName)
       if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
         this.tasksUser.push(this.tasksGlobal[i]);
       }

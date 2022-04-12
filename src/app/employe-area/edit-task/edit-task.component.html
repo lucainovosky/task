@@ -26,7 +26,7 @@
       class="form-control"
       id="dateStart"
       required
-      ngModel="{{this.formatDateForHtml(this.tasksGlobal[indexTask].startDate)}}"
+      ngModel="{{this.formatDate(this.tasksGlobal[indexTask].startDate,'/','-')}}"
       name="dateStart">
 
       <!--DATE END-->
@@ -37,7 +37,7 @@
       class="form-control"
       id="dateEnd"
       required
-      ngModel="{{this.formatDateForHtml(this.tasksGlobal[indexTask].dueDate)}}"
+      ngModel="{{this.formatDate(this.tasksGlobal[indexTask].dueDate,'/','-')}}"
       name="dateEnd">
 
       <!--PRIORITY-->
@@ -46,13 +46,11 @@
       <select class="form-control"
       id="priority"
       name="priority"
-      required>
+      required
+      [(ngModel)]="selectedPriority">
 
         <option
-        *ngFor="let _priority of priorityArray"
-        [value]="_priority"
-
-        [selected]="_priority == tasksGlobal[indexTask].priority">
+        *ngFor="let _priority of priorityArray">
           {{_priority}}
         </option>
 
@@ -64,12 +62,11 @@
       <select class="form-control"
       id="employe"
       name="employe"
-      required>
+      required
+      [(ngModel)]="selectedEmploye">
 
         <option
-        *ngFor="let _employe of employesArray"
-        [value]="_employe.name"
-        [selected]="_employe.name == tasksGlobal[indexTask].personName">
+        *ngFor="let _employe of employesArray">
           {{_employe.name}}
         </option>
 
@@ -92,12 +89,11 @@
       <select class="form-control"
       id="state"
       name="state"
-      required>
+      required
+      [(ngModel)]="selectedState">
 
         <option
-        *ngFor="let _state of stateArray"
-        [value]="_state"
-        [selected]="_state == tasksGlobal[indexTask].state">
+        *ngFor="let _state of stateArray">
           {{_state}}
         </option>
 
@@ -110,8 +106,7 @@
       id="progress"
       name="progress"
       required
-      class="form-control"
-      [(ngModel)]="selectedOption">
+      [(ngModel)]="selectedProgress">
 
         <option
         *ngFor="let _progress of progressArray">

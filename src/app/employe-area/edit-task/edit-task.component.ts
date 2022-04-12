@@ -24,16 +24,22 @@ export class EditTaskComponent implements OnInit {
     private taskIndex : TaskIndexSelectedService) { }
 
   tasksGlobal : TaskInterface[] = [];//get all the tasks
+
   taskToEdit : TaskInterface = {
     taskName : "", personName : "", startDate : "", dueDate : "", priority : "",
     involved : "", state : "", progress : ""
   };//create the tasks to edit
+
   indexTask : number = 0//get the index array
 
   //viewchild decorator listen the html form
   @ViewChild('employeEditForm', { static: false }) submitForm !: NgForm;
 
-  selectedOption: string = "";
+  //custom dropdown selection
+  selectedPriority: string = ''
+  selectedEmploye: string = ''
+  selectedState: string = ''
+  selectedProgress: string = ''
 
   //create the dropdown list
   employesArray = Employes;
@@ -44,11 +50,15 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.indexTask = this.taskIndex.getIndex()
+
     //subscribe to new task added with observable
     this.sharedTaskService.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
-    
-    this.selectedOption = this.tasksGlobal[this.indexTask].progress
+    //set the value to the dropdown menu
+    this.selectedPriority = this.tasksGlobal[this.indexTask].priority.toLowerCase()
+    this.selectedEmploye = this.tasksGlobal[this.indexTask].personName
+    this.selectedState = this.tasksGlobal[this.indexTask].state.toLowerCase()
+    this.selectedProgress = this.tasksGlobal[this.indexTask].progress.replace('%','')
   }
 
   onSubmit() {
@@ -57,26 +67,12 @@ export class EditTaskComponent implements OnInit {
 
     this.taskToEdit.taskName = this.submitForm.value.taskName
     this.taskToEdit.personName = this.submitForm.value.employe
-    this.taskToEdit.startDate = this.submitForm.value.dateStart
-    this.taskToEdit.dueDate = this.submitForm.value.dateEnd
-    this.taskToEdit.priority = this.submitForm.value.priority
+    this.taskToEdit.startDate = this.formatDate(this.submitForm.value.dateStart,'-','/')
+    this.taskToEdit.dueDate = this.formatDate(this.submitForm.value.dateEnd,'-','/')
+    this.taskToEdit.priority = this.submitForm.value.priority.toUpperCase()
     this.taskToEdit.involved = this.submitForm.value.involvedPeople
-    this.taskToEdit.state = this.submitForm.value.state
-    this.taskToEdit.progress = this.submitForm.value.progress
-
-    console.log("taskName " + this.submitForm.value.taskName)
-    console.log("employe " + this.submitForm.value.employe)
-    console.log("dateStart " + this.submitForm.value.dateStart)
-    console.log("dateEnd " + this.submitForm.value.dateEnd)
-    console.log("priority " + this.submitForm.value.priority)
-    console.log("involvedPeople " + this.submitForm.value.involvedPeople)
-    console.log("state " + this.submitForm.value.state)
-    console.log("progress " + this.submitForm.value.progress)
-    console.log("yourModelName " + this.submitForm.value.yourModelName)
-
-
-    //add the input form to the observable
-    //this.sharedTaskService.nextMessage(this.taskToEdit);
+    this.taskToEdit.state = this.submitForm.value.state.toUpperCase()
+    this.taskToEdit.progress = this.submitForm.value.progress + "%"
 
     this.tasksGlobal[this.indexTask] = this.taskToEdit;
 
@@ -84,16 +80,14 @@ export class EditTaskComponent implements OnInit {
 
   }
 
-  formatDateForHtml(input : string) : string {
-    let splitInput = input.split("/")
-    return splitInput[2] + "-" + splitInput[1] + "-" + splitInput[0];
+  formatDate(input : string, splitVal : string, replaceVal : string) : string {
+    let splitInput = input.split(splitVal)
+    return splitInput[2] + replaceVal + splitInput[1] + replaceVal + splitInput[0];
   }
 
   goToEmployeArea() {
     this.selectedUserServ.setEmploye(this.submitForm.value.employe);
     this.router.navigate(['/employe']);
   }
-
-
 
 }
