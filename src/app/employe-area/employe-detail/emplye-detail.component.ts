@@ -13,7 +13,7 @@ export class EmplyeDetailComponent implements OnInit, OnChanges {
   constructor(private selectedUserServ : SelectedUserService ) { }
 
   ngOnInit(): void {
-    if(this.selectedUserServ.selectedEmploye == "") {
+    if(this.selectedUserServ.selection == "") {
       this.setTitle(true);
     } else {
       this.setTitle(false);
@@ -30,7 +30,8 @@ export class EmplyeDetailComponent implements OnInit, OnChanges {
     if(initialState) {
       this.inputEmploye = "Please select an employe or access to the Boss page to add a task!"
     } else {
-      this.inputEmploye = this.selectedUserServ.selectedEmploye + "'s tasks list"
+      console.log("entro per mettere titolo "+this.selectedUserServ.selection)
+      this.inputEmploye = this.selectedUserServ.selection + " tasks list"
     }
   }
 

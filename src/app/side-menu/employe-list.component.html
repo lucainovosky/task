@@ -1,9 +1,16 @@
 <div class="list-group btn-group sideBar">
   <ul class="list-group">
+    <li class="titleList">Tasks selection</li>
+    <hr>
     <li class="list-group-item"
     *ngFor="let employe of employes"
     (click)="onSelect(employe)">
     {{employe.name}}
     </li>
+    <hr>
+    <li class="list-group-item" (click)="filterTasks('All')">All</li>
+    <li class="list-group-item" (click)="filterTasks('In Progress')">In Progress</li>
+    <li class="list-group-item" (click)="filterTasks('Blocked')">Blocked</li>
+    <li class="list-group-item" (click)="filterTasks('Ended')">Ended</li>
   </ul>
 </div>

@@ -31,18 +31,28 @@ export class TaskListComponent implements OnInit, OnChanges {
     private taskIndex : TaskIndexSelectedService) { }
 
   ngOnInit(): void {
+
     this.inputEmploye = this.setSelectedUser();
     this.bossLogged = this.logService.isLoggedIn;
 
     //subscribe to new task added with observable
     this.sharedServTask.sharedTasks.subscribe(message => this.tasksGlobal = message);
 
-    for(let i = 0; i < this.tasksGlobal.length; i++) {
-      if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
-        this.tasksUser.push(this.tasksGlobal[i]);
+    /*if(this.selectedUserServ.employeSelected) {
+      for(let i = 0; i < this.tasksGlobal.length; i++) {
+        console.log("entro quiiiiii")
+        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
+          this.tasksUser.push(this.tasksGlobal[i]);
+        }
       }
-    }
-
+    } else if(this.selectedUserServ.tasksFilterSelected) {
+      for(let i = 0; i < this.tasksGlobal.length; i++) {
+        if(this.selectedUserServ.selectedEmploye == this.tasksGlobal[i].personName) {
+          console.log("entro qui")
+          this.tasksUser.push(this.tasksGlobal[i]);
+        }
+      }
+    }*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,17 +61,32 @@ export class TaskListComponent implements OnInit, OnChanges {
 
     for(let i = 0; i < this.tasksGlobal.length; i++) {
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
-        this.inputEmploye != "") {
+        this.inputEmploye != "" && this.selectedUserServ.employeFilterSelected) {
+
         this.tasksUser.push(this.tasksGlobal[i]);
         this.emptyTaskUserList = false;
+
+
+      } else if(this.tasksGlobal[i].state.toLowerCase() == this.inputEmploye?.toLocaleLowerCase() &&
+        this.inputEmploye != "" && this.selectedUserServ.tasksFilterSelected) {
+
+          this.tasksUser.push(this.tasksGlobal[i]);
+          this.emptyTaskUserList = false;
+
       }
+
+      if(this.inputEmploye?.toLocaleLowerCase() == "all") {
+        this.tasksUser = this.tasksGlobal;
+        this.emptyTaskUserList = false;
+      }
+
     }
 
   }
 
   setSelectedUser() : string {
-    if(this.selectedUserServ.selectedEmploye != "") {
-      return this.selectedUserServ.selectedEmploye;
+    if(this.selectedUserServ.selection != "") {
+      return this.selectedUserServ.selection;
     }
     return this.tasksGlobal[0].personName;
   }
