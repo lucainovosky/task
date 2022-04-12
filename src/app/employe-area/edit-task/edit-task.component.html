@@ -26,7 +26,7 @@
       class="form-control"
       id="dateStart"
       required
-      value="{{this.formatDateForHtml(this.tasksGlobal[indexTask].startDate)}}"
+      ngModel="{{this.formatDateForHtml(this.tasksGlobal[indexTask].startDate)}}"
       name="dateStart">
 
       <!--DATE END-->
@@ -37,7 +37,7 @@
       class="form-control"
       id="dateEnd"
       required
-      value="{{this.formatDateForHtml(this.tasksGlobal[indexTask].dueDate)}}"
+      ngModel="{{this.formatDateForHtml(this.tasksGlobal[indexTask].dueDate)}}"
       name="dateEnd">
 
       <!--PRIORITY-->
@@ -109,12 +109,12 @@
       <select class="form-control"
       id="progress"
       name="progress"
-      required>
+      required
+      class="form-control"
+      [(ngModel)]="selectedOption">
 
         <option
-        *ngFor="let _progress of progressArray"
-        [value]="_progress"
-        [selected]="_progress+'%' == tasksGlobal[indexTask].progress">
+        *ngFor="let _progress of progressArray">
           {{_progress}}
         </option>
 

@@ -33,6 +33,8 @@ export class EditTaskComponent implements OnInit {
   //viewchild decorator listen the html form
   @ViewChild('employeEditForm', { static: false }) submitForm !: NgForm;
 
+  selectedOption: string = "";
+
   //create the dropdown list
   employesArray = Employes;
   priorityArray = Priority;
@@ -44,6 +46,9 @@ export class EditTaskComponent implements OnInit {
     this.indexTask = this.taskIndex.getIndex()
     //subscribe to new task added with observable
     this.sharedTaskService.sharedTasks.subscribe(message => this.tasksGlobal = message);
+
+    
+    this.selectedOption = this.tasksGlobal[this.indexTask].progress
   }
 
   onSubmit() {
@@ -58,6 +63,17 @@ export class EditTaskComponent implements OnInit {
     this.taskToEdit.involved = this.submitForm.value.involvedPeople
     this.taskToEdit.state = this.submitForm.value.state
     this.taskToEdit.progress = this.submitForm.value.progress
+
+    console.log("taskName " + this.submitForm.value.taskName)
+    console.log("employe " + this.submitForm.value.employe)
+    console.log("dateStart " + this.submitForm.value.dateStart)
+    console.log("dateEnd " + this.submitForm.value.dateEnd)
+    console.log("priority " + this.submitForm.value.priority)
+    console.log("involvedPeople " + this.submitForm.value.involvedPeople)
+    console.log("state " + this.submitForm.value.state)
+    console.log("progress " + this.submitForm.value.progress)
+    console.log("yourModelName " + this.submitForm.value.yourModelName)
+
 
     //add the input form to the observable
     //this.sharedTaskService.nextMessage(this.taskToEdit);
