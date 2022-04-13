@@ -3,16 +3,19 @@
     <li class="titleList">Tasks selection</li>
     <hr>
     <li class="list-group-item"
-    *ngFor="let employe of employes; let i = index"
-    [ngClass]="{'active': selectedEmployeIndex === i}"
-    (click)="onSelect(employe); selectedEmployeIndex = i; selectedStateIndex = -1">
+    *ngFor="let employe of employes"
+    [ngClass]="{'active': employe.name == getSelection}"
+    (click)="selectName(employe)">
     {{employe.name}}
     </li>
     <hr>
     <li class="list-group-item"
-    *ngFor="let state of states; let i = index"
-    [ngClass]="{'active': selectedStateIndex === i}"
-    (click)="filterTasks(state); selectedStateIndex = i; selectedEmployeIndex = -1">
+    [ngClass]="{'active': 'All' == getSelection}"
+    (click)="selectState('All')">All</li>
+    <li class="list-group-item"
+    *ngFor="let state of states"
+    [ngClass]="{'active': state == getSelection}"
+    (click)="selectState(state)">
     {{state}}
     </li>
   </ul>

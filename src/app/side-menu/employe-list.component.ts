@@ -26,25 +26,22 @@ export class EmployeListComponent implements OnInit {
 
   states = State;
 
-  outputEmploye : string = "";
+  getSelection : string = ''
 
-  selectedEmployeIndex = -1;
-  selectedStateIndex = -1;
-
-  onSelect(employe : EmployeInterface):void {
-    this.outputEmploye = employe.name;
-    this.selectedUserServ.setEmploye(this.outputEmploye);
-    this.onOutputEmploye();
+  selectName(employe : EmployeInterface) {
+    this.selectedUserServ.setEmploye(employe.name);
+    this.outputValSelected(employe.name);
   }
 
-  onOutputEmploye() {
-    //emetto l'evento
-    this.newitemEvent.emit(this.outputEmploye);
-  }
-
-  filterTasks(filter : string) {
+  selectState(filter : string) {
     this.selectedUserServ.setOtherFilter(filter);
-    this.newitemEvent.emit(filter);
+    this.outputValSelected(filter);
+  }
+  
+  outputValSelected(selection : string) {
+    //emetto l'evento
+    this.getSelection = selection
+    this.newitemEvent.emit(selection);
   }
 
 }
