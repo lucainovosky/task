@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "task-management-a76cb": {
+      "hosting": {
+        "task": [
+          "task-managemetn-project"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "task-management-a76cb"
+  }
+}
