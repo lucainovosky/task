@@ -52,6 +52,9 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   initializeList() {
     for(let i = 0; i < this.tasksGlobal.length; i++) {
+
+      this.correctFormatEditedTasks(this.tasksGlobal[i])
+
       if(this.tasksGlobal[i].personName == this.inputEmploye &&
         this.inputEmploye != "" && this.selectedUserServ.employeFilterSelected) {
 
@@ -74,6 +77,25 @@ export class TaskListComponent implements OnInit, OnChanges {
 
     }
 
+  }
+
+  correctFormatEditedTasks(taskToEdit : TaskInterface) {
+    taskToEdit.dueDate = this.formatDate(taskToEdit.dueDate,"-","/")
+    taskToEdit.startDate = this.formatDate(taskToEdit.startDate,"-","/")
+    taskToEdit.progress = this.addPercent(taskToEdit.progress)
+  }
+
+  formatDate(input : string, splitVal : string, replaceVal : string) : string {
+    if(input.includes('-')) {
+      let splitInput = input.split(splitVal)
+      return splitInput[2] + replaceVal + splitInput[1] + replaceVal + splitInput[0];
+    }
+    return input
+  }
+
+  addPercent(input : string) : string {
+    if(input.includes('%'))    return input
+    return input + "%"
   }
 
   setSelectedUser() : string {
